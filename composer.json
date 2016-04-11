@@ -1,0 +1,19 @@
+{
+    "name": "zendframework/posts",
+    "description": "Sistema de controle de posts",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+	"minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.5",
+	"doctrine/doctrine-orm-module" : "0.*"
+    },
+    "config": {
+	"process-timeout": 50000
+	}
+}

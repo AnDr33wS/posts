@@ -1,0 +1,42 @@
+<div class="actions clearfix">
+	<div class="btns">
+		<a class="btn submit" href="/application/index/save" title="Criar Post">Criar
+			Post</a>
+	</div>
+</div>
+<label class="divisor"><span>Lista de Posts</span></label>
+<table class="datatable">
+	<thead>
+		<tr>
+			<th>Título</th>
+			<th>Texto</th>
+			<th width="130" class="center">Data de Cadastro</th>
+			<th width="120" class="center">Opções</th>
+		</tr>
+	</thead>
+	<tbody>
+    <?php foreach($posts as $post):?>
+      <tr>
+			<!-- linha nova na tabela -->
+
+			<td><?php echo $this->escapeHtml($post->getTitle());?></td>
+			<td><?php echo $this->escapeHtml($post->getDescription());?></td>
+			<td class="center">
+          <?php      // setando ('d/m/Y', settotime (variavel->pegadatadavariavel())));   
+          $data=date('d/m/Y',strtotime($post->getPostDate()));
+						echo $data;
+					//echo $this->escapeHtml($post->getPostDate());
+          ?>
+        </td>
+			<td class="center">
+				<a href="/application/index/save/id/<?php echo $post->getId();?>" title="Editar" class="btn"><i class="icon-edit"></i></a> 
+				<a href="/application/comment/save/id/<?php echo $post->getId();?>"title="Comentar" class="btn"><i class="icon-comment"></i></a> 
+				<a href="/application/index/delete/id/<?php echo $post->getId();?>"title="Comentar Post" class="btn" >  <i class="icon-remove"></i></a>
+			</td>
+		</tr>
+    <?php endforeach;?>
+
+
+
+
+</table>
