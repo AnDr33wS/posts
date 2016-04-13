@@ -22,6 +22,7 @@ class CommentController extends ActionController {
 	 * @var Doctrine\ORM\EntityManager
 	 */
 	protected $em;
+	
 	public function setEntityManager(EntityManager $em) {
 		$this->em = $em;
 	}
@@ -38,7 +39,7 @@ class CommentController extends ActionController {
 		if ($request->isPost ()) {
 			$comment = new Comment ();
 			$form->setInputFilter ( $comment->getInputFilter () );
-			$form->setData ( $request->getData () );
+			$form->setData ( $request->getPost() );
 			if ($form->isValid ()) {
 				$data = $form->getData ();
 				if (isset ( $data ['id'] ) && $data ['id'] > 0) {
