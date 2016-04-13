@@ -33,7 +33,8 @@ class CommentController extends ActionController {
 	}
 	
 	public function saveAction() {
-		$form = new CommentForm ();
+		$post_id = (int) $this->params()->fromRoute('id',0);
+		$form = new CommentForm ($post_id);
 		$request = $this->getRequest ();
 		if ($request->isPost ()) {
 			$comment = new Comment ();
@@ -41,27 +42,28 @@ class CommentController extends ActionController {
 			$form->setData ( $request->getPost() );
 			if ($form->isValid ()) {
 				$data = $form->getData ();
-				if (isset ( $data ['id'] ) && $data ['id'] > 0) {
-					$comment = $this->getEntityManager ()->find ( 'Application\Model\Post', $data ['id'] );
+				$post = $this->getEntityManager ()->find ( 'Application\Model\Post', $data ['post_id'] );
+	 				if (isset ( $data ['id'] ) && $data ['id'] > 0) {
+					$comment = $this->getEntityManager ()->find ( 'Application\Model\Post', $data ['post_id'] );
 				}
 				unset ( $data ['submit'] );
 				$comment->setData ( $data );
-				$id = ( int ) $this->params ()->fromRoute ( 'id', 0 );
-				$post = $this->getEntityManager ()->find ( 'Application\Model\Post', $id );
 				$comment->setPost($post);
 				$this->getEntityManager ()->persist ( $comment );
 				$this->getEntityManager ()->flush ();
 				return $this->redirect ()->toUrl ( '/application' );
 			}
 		}
-//		 else {
+// 	 else {
+	 	
 // 			if ($id > 0) { 		
 //  				$form->bind ( $comment );
 //  				$form->get ( 'submit' )->setAttribute ( 'value', 'Edit' );
 //  			}
 	
 		return new ViewModel ( array (
-				'form' => $form
+				'form' => $form,
+				'post_id' => $post_id
 				));
 				
 }

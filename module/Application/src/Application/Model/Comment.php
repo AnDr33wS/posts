@@ -119,15 +119,15 @@ class Comment extends Entity {
 							) 
 					) 
 			) ) );
-			$inputFilter->add ( $factory->createInput ( array (
-					'name' => 'post_id',
-					'required' => true,
-					'filters' => array (
-							array (
-									'name' => 'Int' 
-							) 
-					) 
-			) ) );
+// 			$inputFilter->add ( $factory->createInput ( array (
+// 					'name' => 'post_id',
+// 					'required' => true,
+// 					'filters' => array (
+// 							array (
+// 									'name' => 'Int' 
+// 							) 
+// 					) 
+// 			) ) );
 			$inputFilter->add ( $factory->createInput ( array (
 					'name' => 'description',
 					'required' => true,
@@ -201,18 +201,18 @@ class Comment extends Entity {
 							) 
 					) 
 			) ) );
-			$inputFilter->add ( $factory->createInput ( array (
-					'name' => 'comment_date',
-					'required' => false,
-					'filters' => array (
-							array (
-									'name' => 'StripTags' 
-							),
-							array (
-									'name' => 'StringTrim' 
-							) 
-					) 
-			) ) );
+// 			$inputFilter->add ( $factory->createInput ( array (
+// 					'name' => 'comment_date',
+// 					'required' => false,
+// 					'filters' => array (
+// 							array (
+// 									'name' => 'StripTags' 
+// 							),
+// 							array (
+// 									'name' => 'StringTrim' 
+// 							) 
+// 					) 
+// 			) ) );
 			$this->inputFilter = $inputFilter;
 		}
 		return $this->inputFilter;

@@ -5,7 +5,7 @@ namespace Application\Form;
 use Zend\Form\Form;
 
 class Comment extends Form {
-	public function __construct() {
+	public function __construct($post_id) {
 		parent::__construct ( 'comment' );
 		$this->setAttribute ( 'method', 'post' );
 		$this->setAttribute ( 'action', '/application/comment/save' );
@@ -15,6 +15,13 @@ class Comment extends Form {
 				'attributes' => array (
 						'type' => 'hidden' 
 				) 
+		) );
+		$this->add ( array (
+				'name' => 'post_id',
+				'attributes' => array (
+						'type' => 'hidden',
+						'value' => $post_id
+				)
 		) );
 		
 		$this->add ( array (
