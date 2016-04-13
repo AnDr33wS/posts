@@ -31,24 +31,23 @@ class CommentController extends ActionController {
 		}
 		return $this->em;
 	}
-	
 	public function saveAction() {
-		$post_id = (int) $this->params()->fromRoute('id',0);
-		$form = new CommentForm ($post_id);
+		$post_id = ( int ) $this->params ()->fromRoute ( 'id', 0 );
+		$form = new CommentForm ( $post_id );
 		$request = $this->getRequest ();
 		if ($request->isPost ()) {
 			$comment = new Comment ();
 			$form->setInputFilter ( $comment->getInputFilter () );
-			$form->setData ( $request->getPost() );
+			$form->setData ( $request->getPost () );
 			if ($form->isValid ()) {
 				$data = $form->getData ();
 				$post = $this->getEntityManager ()->find ( 'Application\Model\Post', $data ['post_id'] );
-	 				if (isset ( $data ['id'] ) && $data ['id'] > 0) {
+				if (isset ( $data ['id'] ) && $data ['id'] > 0) {
 					$comment = $this->getEntityManager ()->find ( 'Application\Model\Post', $data ['post_id'] );
 				}
 				unset ( $data ['submit'] );
 				$comment->setData ( $data );
-				$comment->setPost($post);
+				$comment->setPost ( $post );
 				$this->getEntityManager ()->persist ( $comment );
 				$this->getEntityManager ()->flush ();
 				return $this->redirect ()->toUrl ( '/application' );

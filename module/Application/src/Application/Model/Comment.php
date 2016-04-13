@@ -119,15 +119,15 @@ class Comment extends Entity {
 							) 
 					) 
 			) ) );
-// 			$inputFilter->add ( $factory->createInput ( array (
-// 					'name' => 'post_id',
-// 					'required' => true,
-// 					'filters' => array (
-// 							array (
-// 									'name' => 'Int' 
-// 							) 
-// 					) 
-// 			) ) );
+			// $inputFilter->add ( $factory->createInput ( array (
+			// 'name' => 'post_id',
+			// 'required' => true,
+			// 'filters' => array (
+			// array (
+			// 'name' => 'Int'
+			// )
+			// )
+			// ) ) );
 			$inputFilter->add ( $factory->createInput ( array (
 					'name' => 'description',
 					'required' => true,

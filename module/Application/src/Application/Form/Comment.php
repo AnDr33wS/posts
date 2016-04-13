@@ -20,8 +20,8 @@ class Comment extends Form {
 				'name' => 'post_id',
 				'attributes' => array (
 						'type' => 'hidden',
-						'value' => $post_id
-				)
+						'value' => $post_id 
+				) 
 		) );
 		
 		$this->add ( array (
